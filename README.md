@@ -7,27 +7,38 @@ This repository presents Assignment 3 for the Data Management course. The task i
 ## 📂 Directory Structure
 
 ```
-movielens-assignment3/
-|
-├── notebooks/              
-│   ├── Assignment3.json     
-│   └── Zeppelin.png          
-|
-├── data/                    
-│   └── README.md             ← How to download ml-100k
-|
-├── results/                 
-│   ├── question1_avg_rating.png
-│   ├── question2_top10.png
-│   ├── question3_fav_genre.png
-│   ├── question4_age_under20.png
-│   └── question5_scientist.png
-|
-├── docs/
-│   └── REPORT.md             
-|
-└── README.md
+Assignment3_MovieLens/
+│
+├── data/                            
+│   ├── u.data
+│   ├── u.genre
+│   ├── u.item
+│   └── u.user
+│
+├── docs/                             ← Documentation (analysis + setup)
+│   ├── INSTALL.md                    Zeppelin + Cassandra setup guide
+│   └── REPORT.md                     SQL query explanations
+│
+├── notebooks/                        ← Zeppelin notebook and assets
+│   ├── Assignment3.json              Zeppelin notebook export (JSON)
+│   ├── Zeppelin.png                  Screenshot of the Zeppelin
+│   └── Zeppelin.pdf                  Exported Zeppelin as PDF
+│
+├── screenshots/                      ← Query results 
+│   ├── 1-movie-average-ratings.png
+│   ├── 2-top-10-highest-rated-movies.png
+│   ├── 3-user-favorite-genre-by-ratings.png
+│   ├── 4-users-under-20.png
+│   └── 5-scientists-aged-30-40.png
+│             
+└── README.md                       
 ```
+
+<p align="center">
+  <a href="notebook/Zeppelin.pdf" target="_blank">
+    📄 <strong>Open the Zeppelin Notebook (PDF)</strong>
+  </a>
+</p>
 
 ---
 
@@ -83,5 +94,4 @@ movielens-assignment3/
 
 📄 [View Full Report](docs/REPORT.md)  
 ---
-
 
