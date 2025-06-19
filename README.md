@@ -1,44 +1,87 @@
-# Assignment 3 – MovieLens Data Management Pipeline
+# MovieLens Assignment 3 - PySpark + Cassandra + Zeppelin
 
-## Overview
+This repository presents Assignment 3 for the Data Management course. The task is to analyze the MovieLens 100k dataset using **PySpark**, store the data in **Apache Cassandra**, and run SQL-based queries within a **Zeppelin notebook**.
 
-This repository contains the solution to Assignment 3 of the Data Management course.  
-I build a distributed ETL and analytics pipeline using Spark + Cassandra on the MovieLens 100k dataset, fully implemented in Apache Zeppelin.
+---
 
-## Features
+## 📂 Directory Structure
 
-- Load MovieLens data from HDFS using PySpark
-- Transform and clean user, movie, and rating data
-- Store data into Cassandra with appropriate schema
-- Perform analytical queries using Spark SQL
-- Visualize results with Zeppelin and Markdown
-- Organize content in modular, reproducible Notebook format
+```
+movielens-assignment3/
+|
+├── notebooks/              
+│   ├── Assignment3.json     
+│   └── Zeppelin.png          
+|
+├── data/                    
+│   └── README.md             ← How to download ml-100k
+|
+├── results/                 
+│   ├── question1_avg_rating.png
+│   ├── question2_top10.png
+│   ├── question3_fav_genre.png
+│   ├── question4_age_under20.png
+│   └── question5_scientist.png
+|
+├── docs/
+│   └── REPORT.md             
+|
+└── README.md
+```
 
-## Folder Structure
+---
 
-| Folder        | Content                                       |
-|---------------|-----------------------------------------------|
-| `notebook/`   | Zeppelin notebook JSON (`Assignment3_MovieLens.json`) |
-| `data/`       | Raw data files (user, item, data, genre)      |
-| `screenshots/`| Step-by-step output snapshots (Spark + SQL)   |
-| `docs/`       | (Optional) PDF/Markdown summary and extra analysis |
+## 🚀 How to Use
 
-## Learning Highlights
+1. **Environment:** Apache Zeppelin + PySpark + Cassandra
+2. **Import Notebook:** Upload `Assignment3.json` into Zeppelin
+3. **Upload Dataset:** Place MovieLens `u.user`, `u.data`, `u.item`, `u.genre` into HDFS or local path
+4. **Run Notebook:** Execute all code cells step-by-step
+5. **Match Outputs:** Refer to screenshots in `/results/` for reference
 
-- Applied ETL in Spark: from HDFS → DataFrame → Cassandra
-- Designed data models for NoSQL (composite keys, sets)
-- Used Cassandra + Spark integration via connector
-- Wrote SQL-like analytics to answer 5 tasks from assignment
-- Demonstrated reproducibility and documentation in Zeppelin
+🛠 [Zeppelin + Cassandra Setup Guide](docs/INSTALL.md)
+---
 
-## Future Extensions
+## 📊 Implemented SQL Queries
 
-- Integrate Apache Airflow or Oozie for automation
-- Add streaming ingest and real-time dashboard via Superset
-- Extend to MovieLens 1M or Netflix dataset for scalability test
+### (i) Average Rating Per Movie
+- **Description:** Computes average rating grouped by movie ID
+- **Enhancement:** Joined with `movies` table to display `title`
+- **Screenshot:**  
+![](screenshots/1-movie-average-ratings.png)
 
-## Submitted for
+### (ii) Top 10 Highest-Rated Movies
+- **Description:** Shows 10 movies with highest average ratings
+- **Enhancement:** Includes both `title` and `movie_id`
+- **Screenshot:**    
+![](screenshots/2-top-10-highest-rated-movies.png)
 
-- Course: Data Management
-- Student: [Zhang Zhuorui]
-- Date: 16/June/2025
+### (iii) Active Users' Favorite Genre
+- **Description:** For users with ≥50 ratings, find their most rated genre
+- **Enhancement:** Added `gender` and `occupation` from `users` table
+- **Screenshot:**  
+![](screenshots/3-user-favorite-genre-by-ratings.png)
+
+### (iv) Users Under 20
+- **Description:** Shows user info where `age < 20`
+- **Enhancement:** Sorted by age
+- **Screenshot:**  
+![](screenshots/4-users-under-20.png)
+
+### (v) Scientists Aged 30–40
+- **Description:** Filter `occupation = 'scientist'` and age between 30–40
+- **Screenshot:**  
+![](screenshots/5-scientists-aged-30-40.png)
+
+---
+
+##  Notes
+
+- Zeppelin Markdown and visual output included
+- Cassandra keyspace used: `movielens`
+- All three tables (`users`, `ratings`, `movies`) persisted in Cassandra
+
+📄 [View Full Report](docs/REPORT.md)  
+---
+
+
