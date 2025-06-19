@@ -35,10 +35,12 @@ Assignment3_MovieLens/
 ```
 
 <p align="center">
-  <a href="notebook/Zeppelin.pdf" target="_blank">
-    📄 <strong>Open the Zeppelin Notebook (PDF)</strong>
+  <a href="notebook/Zeppelin.png" target="_blank">
+    📄 <strong>Open the Notebook</strong>
   </a>
 </p>
+
+
 
 ---
 
