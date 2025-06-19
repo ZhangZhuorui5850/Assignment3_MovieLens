@@ -96,4 +96,47 @@ Assignment3_MovieLens/
 
 📄 [View Full Report](docs/REPORT.md)  
 ---
+## 🧩 Challenges & Solutions
 
+### 1. Jupyter Notebook: Unable to Connect to Cassandra
+
+**Problem:**  
+Code that worked in Zeppelin failed in Jupyter Notebook with errors such as NoClassDefFoundError or Cassandra connection refused.
+
+**Cause:**  
+Jupyter Notebook does not automatically load required JAR dependencies. In addition, Spark cannot reach Cassandra unless configured explicitly.
+
+**Solution:**  
+- This problem has not been solved yet
+
+---
+
+### 2. Zeppelin: Cassandra Connector Not Recognized
+
+**Problem:**  
+In Zeppelin, spark or pyspark interpreter failed with errors like "Class not found" for Cassandra-related classes.
+
+**Cause:**  
+Zeppelin runs under a restricted system user and cannot access `.jar` files placed in the user's home directory.
+
+**Solution:**  
+- Downloaded required connector `.jar` files:
+  - `spark-cassandra-connector_2.11-2.3.0.jar`
+  - `cassandra-driver-core-3.5.0.jar`
+- Moved them to Zeppelin’s global JAR directory:
+
+```bash
+sudo mkdir -p /usr/lib/zeppelin/jars
+sudo cp *.jar /usr/lib/zeppelin/jars/
+```
+
+- Configured the Spark interpreter under Zeppelin:
+
+```text
+spark.jars = /usr/lib/zeppelin/jars/spark-cassandra-connector_2.11-2.3.0.jar,/usr/lib/zeppelin/jars/cassandra-driver-core-3.5.0.jar
+spark.cassandra.connection.host = 127.0.0.1
+```
+
+- Restarted the interpreter and re-ran the notebook
+
+---
